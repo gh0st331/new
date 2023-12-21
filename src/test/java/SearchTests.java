@@ -6,6 +6,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class SearchTests {
+    private static String msg = "say hi";
     @Test
     void successfulSearchTest() {
         Configuration.pageLoadStrategy = "eager";
