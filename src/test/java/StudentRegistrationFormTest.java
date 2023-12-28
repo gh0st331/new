@@ -14,28 +14,24 @@ public class StudentRegistrationFormTest {
         Configuration.pageLoadStrategy = "eager";
     }
 
-    SelenideElement firstName = $("[id=firstName]");
     @Test
     void fillRegistrationForm(){
 
         open("https://demoqa.com/automation-practice-form");
-        firstName.sendKeys("SomeText");
-
-
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
-        $("#firstName").setValue("Ivan");
-        $("#lastName").setValue("Ivanov");
-        $("#userEmail").setValue("ivanov88@mail.ru");
+        $("#firstName").setValue("Test");
+        $("#lastName").setValue("User");
+        $("#userEmail").setValue("testuser@gmail.com");
         $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("9119991919");
+        $("#userNumber").setValue("9197768011");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption(7);
         $(".react-datepicker__year-select").selectOption(88);
         $(".react-datepicker__day--023").click();
         $("#subjectsInput").setValue("Arts").pressEnter();
         $("#hobbiesWrapper").$(byText("Music")).click();
-//        $("#uploadPicture").uploadFromClasspath("screen.jpg");
+        $("[id=uploadPicture]").uploadFromClasspath("test.jpeg");
         $("#currentAddress").setValue("Test");
         $("#state").click();
         $("#stateCity-wrapper").$(byText("Haryana")).click();
@@ -45,13 +41,13 @@ public class StudentRegistrationFormTest {
 
 //check
         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Ivan Ivanov"));
-        $(".table-responsive").shouldHave(text("ivanov88@mail.ru"));
+        $(".table-responsive").shouldHave(text("Test User"));
+        $(".table-responsive").shouldHave(text("testuser@gmail.com"));
         $(".table-responsive").shouldHave(text("Male"));
-        $(".table-responsive").shouldHave(text("9119991919"));
+        $(".table-responsive").shouldHave(text("9197768011"));
         $(".table-responsive").shouldHave(text("23 August,1988"));
         $(".table-responsive").shouldHave(text("Test"));
-//        $(".table-responsive").shouldHave(text("screen.jpg"));
+        $(".table-responsive").shouldHave(text("test.jpeg"));
         $(".table-responsive").shouldHave(text("Test"));
         $(".table-responsive").shouldHave(text("Haryana Karnal"));
 
